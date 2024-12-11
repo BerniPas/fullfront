@@ -28,7 +28,7 @@ function Usuarios() {
             console.error('Error al obtener los usuarios:', error);
         }
 
-    }, [id]);
+    }, [usuarios]);
 
     const eliminarUsuario = async (id) => {
 
