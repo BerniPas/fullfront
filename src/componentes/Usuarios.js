@@ -14,7 +14,7 @@ function Usuarios() {
 
         try {
             const obtenerUsuarios = async () => {
-                const respuesta = await axios.get(URL);
+                const respuesta = await axios.get(`${URL}`);
                 setUsuarios(respuesta.data);
 
                 console.log(respuesta);
