@@ -8,13 +8,13 @@ function Usuarios() {
 
     const [usuarios, setUsuarios] = useState([]);
 
-    const URL = process.env.REACT_APP_API_URL_SERVER_GET;
+    //const URL = process.env.REACT_APP_API_URL_SERVER_GET;
 
     useEffect(() => {
 
         try {
             const obtenerUsuarios = async () => {
-                const respuesta = await axios.get(`https://fullback-production.up.railway.app/user`);
+                const respuesta = await axios.get(`${process.env.REACT_APP_API_URL_SERVER_GET}`);
                 setUsuarios(respuesta.data);
 
                 console.log(respuesta);
