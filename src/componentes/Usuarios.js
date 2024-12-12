@@ -8,11 +8,13 @@ function Usuarios() {
 
     const [usuarios, setUsuarios] = useState([]);
 
+    const URL = process.env.REACT_APP_API_URL_SERVER_GET;
+
     useEffect(() => {
 
         try {
             const obtenerUsuarios = async () => {
-                const respuesta = await axios.get('http://localhost:9000/user/');
+                const respuesta = await axios.get(URL);
                 setUsuarios(respuesta.data);
 
                 console.log(respuesta);
@@ -28,7 +30,7 @@ function Usuarios() {
             console.error('Error al obtener los usuarios:', error);
         }
 
-    }, [usuarios]);
+    }, []);
 
     const eliminarUsuario = async (id) => {
 
