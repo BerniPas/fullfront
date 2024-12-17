@@ -30,7 +30,7 @@ function FormProductos() {
         try {
 
             // CAMBIAR URL PARA QUE FUNCIONE Y CREAR UNA NUEVA RUTA EN EL BACKEND
-            await axios.post( `${process.env.REACT_APP_API_URL_SERVER_POST}`, {
+            await axios.post( `${process.env.REACT_APP_API_POST_PRODUCTOS}`, {
                 nombre,
                 precio, 
                 imagen
