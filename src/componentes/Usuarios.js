@@ -39,7 +39,7 @@ function Usuarios() {
         try {
             const respuesta = await axios.delete(`http://localhost:9000/user/${id}`);
             setUsuarios(usuarios.filter(usuario => usuario._id !== id));
-            //console.log(respuesta);
+            console.log(respuesta);
 
         } catch (error) {
             console.error('Error al eliminar el usuario:', error);
