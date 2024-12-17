@@ -6,28 +6,38 @@ import { useState } from 'react';
 import axios from 'axios';
 import Swal from 'sweetalert2';
 
-function Formulario() {
+function FormProductos() {
 
     const [nombre, setNombre] = useState(''); // const nombre = ''
-    const [email, setEmail] = useState(''); // const email = ''
-    const [password, setPassword] = useState(''); // const password = ''
+    const [precio, setPrecio] = useState(''); // const email = ''
+    const [imagen, setImagen] = useState(null); // const password = ''
 
     const handleSubmit = async(e) => {
         e.preventDefault();
 
-/*         const persona = {
-            nombre,
-            email,
-            password
+/*         const formData = new FormData();
+        formData.append('nombre', nombre);
+        formData.append('precio', precio);
+        formData.append('imagen', imagen); */
+
+        /* const producto = {
+            nombre: nombre,
+            precio: precio,
+            imagen: imagen
         } */
+
         
         try {
 
+            // CAMBIAR URL PARA QUE FUNCIONE Y CREAR UNA NUEVA RUTA EN EL BACKEND
             await axios.post( `${process.env.REACT_APP_API_URL_SERVER_POST}`, {
                 nombre,
-                email,
-                password
+                precio, 
+                imagen
             });
+
+            console.log(nombre, precio, imagen);
+            
 
             handleReset();
 
@@ -58,44 +68,45 @@ function Formulario() {
 
     const handleReset = () => {
         setNombre('');
-        setEmail('');
-        setPassword('');
+        setPrecio('');
+        setImagen('');
     }
 
 
     return (
         <>
         <h1 className='container mt-5 text-center'>
-            Formulario de Registro
+            Formulario de Productos
         </h1>
         <div className='d-flex container mt-5 text-center'>
             <Form className='w-75' onSubmit={handleSubmit}>
                 <Form.Group className="mb-3" controlId="nombre">
-                    <Form.Label>Nombre</Form.Label>
+                    <Form.Label>Nombre del Producto</Form.Label>
                     <Form.Control 
                         type="text" 
                         value={nombre}
                         onChange={(e) => setNombre(e.target.value)} 
-                        placeholder="Tu nombre" 
+                        placeholder="Nombre del Producto" 
                         required
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="email">
-                    <Form.Label>Email</Form.Label>
+                    <Form.Label>Precio del Producto</Form.Label>
                     <Form.Control 
-                        type="email" 
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="name@example.com" 
+                        type="number" 
+                        value={precio}
+                        onChange={(e) => setPrecio(e.target.value)}
+                        placeholder="1000" 
                         required
                         />
                 </Form.Group>
                 <Form.Group className="mb-3" controlId="password">
-                    <Form.Label>Password</Form.Label>
+                    <Form.Label>Imagen del Producto</Form.Label>
                     <Form.Control
-                        type="password" 
-                        value={password}
-                        onChange={(e) =>setPassword(e.target.value)}
+                        type="text" 
+                        value={imagen}
+                        onChange={(e) =>setImagen(e.target.value)}
+                        placeholder="URL de la imagen"
                         required
                         />
                 </Form.Group>
@@ -111,4 +122,4 @@ function Formulario() {
     );
 }
 
-export default Formulario;
+export default FormProductos;

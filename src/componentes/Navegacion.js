@@ -18,6 +18,16 @@ const Navegacion = () =>  {
                     Usuarios
                 </Nav.Link>
             </Nav.Item>
+            <Nav.Item>
+                <Nav.Link href="/formproductos">
+                    Form Productos
+                </Nav.Link>
+            </Nav.Item>
+            <Nav.Item>
+                <Nav.Link href="/mostrarproductos">
+                    Mostrar Productos
+                </Nav.Link>
+            </Nav.Item>
         </Nav>
     );
 }
